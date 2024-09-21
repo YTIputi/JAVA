@@ -27,28 +27,25 @@ public class SimpleUrl {
     private String siteName;
     private String webpageName;
     private String webPageExtension;
-    private int intParam;
-    private double doubleParam;
-    private String textParameter;
+    private String Url;
 
     public SimpleUrl(String protocol,
                      String address,
                      String domainZone,
                      String siteName,
+                     String webpageName,
                      String webPageExtension,
-                     int intParam,
-                     double doubleParam,
-                     String textParameter) {
+                     String Url) {
+
         this.protocol = protocol;
         this.address = address;
         this.domainZone = domainZone;
         this.siteName = siteName;
         this.webpageName = webpageName;
         this.webPageExtension = webPageExtension;
-        this.intParam = intParam;
-        this.doubleParam = doubleParam;
-        this.textParameter = textParameter;
+        this.Url = Url;
     }
+
 
     public String toString() {
         return "protocol = " + protocol + "\n" +
@@ -56,48 +53,11 @@ public class SimpleUrl {
                 "domainZone = " + domainZone + "\n" +
                 "siteName = " + siteName + "\n" +
                 "webpageName = " + webpageName + "\n" +
-                "webPageExtension = " + webPageExtension;
+                "webPageExtension = " + webPageExtension + "\n" +
+                "Url = " + Url;
     }
-
-    public static void main(String[] args) {
-        String url = "https://test.ru/test/1072/page.jsp?intParam=12345&doubleParam=3.14&textParameter=someText";
-
-        // Парсинг URL
-        String protocol = url.split("://")[0];
-        String address = url.split("://")[1].split("/")[0];
-        String[] parts = address.split("\\.");
-        String siteName = parts[0];
-        String domainZone = parts[1];
-        String webpageName = url.split("/")[3].split("\\?")[0];
-        String webPageExtension = webpageName.split("\\.")[1];
-
-        // Получение параметров
-        String queryString = url.split("\\?")[1];
-        String[] params = queryString.split("&");
-        int intParam = 0;
-        double doubleParam = 0.0;
-        String textParameter = "";
-        for (String param : params) {
-            String[] keyValue = param.split("=");
-            switch (keyValue[0]) {
-                case "intParam":
-                    intParam = Integer.parseInt(keyValue[1]);
-                    break;
-                case "doubleParam":
-                    doubleParam = Double.parseDouble(keyValue[1]);
-                    break;
-                case "textParameter":
-                    textParameter = keyValue[1];
-                    break;
-            }
-        }
-
-//        // Создание экземпляра класса
-//        SimpleUrl simpleUrl = new SimpleUrl(protocol, address, domainZone, siteName, webpageName, webPageExtension, intParam, doubleParam, textParameter);
-//
-//        // Вывод информации о полях класса
-//        System.out.println(simpleUrl);
-    }
-
 
 }
+
+
+

@@ -22,8 +22,22 @@ package org.knit.lab1;
 public class Task2 {
     public void execute() {
 
-        String urlValue = "https://test.ru/test/1072/page.jsp?intParam=12345&doubleParam=3.14&textParameter=someText";
+        String url = "https://test.ru/test/1072/page.jsp?intParam=12345&doubleParam=3.14&textParameter=someText";
 
+        // Парсинг URL
+        String protocol = url.split("://")[0];
+        String address = url.split("://")[1].split("/")[0];
+        String siteName = url.split("/")[3];
+        String domainZone = url.split("/")[2].split("\\.")[1];
+        String webpageName = url.split("/")[5].split("\\?")[0];
+        String webPageExtension = webpageName.split("\\.")[1];
+
+
+    // Создание экземпляра класса
+    SimpleUrl simpleurl = new SimpleUrl(protocol, address, domainZone, siteName, webpageName, webPageExtension, url);
+
+    // Вывод информации о полях класса
+        System.out.println(simpleurl);
         /* tips
          * urlValue.split(":");
          */
