@@ -13,12 +13,10 @@ public class Task5 {
         folder1.add(file2);
 
         folder2.add(file3);
-        folder2.add(folder1); // Вложенная папка
+        folder2.add(folder1);
 
-        // Выводим структуру файловой системы
         folder2.display("");
 
-        // Выводим общий размер папки 2
         System.out.println("Total size of Folder2: " + folder2.getSize() + " bytes");
     }
 
